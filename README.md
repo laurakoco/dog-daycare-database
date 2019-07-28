@@ -10,13 +10,13 @@ Simple database to manage a dog daycare. Created with Oracle SQL.
 ## ER Diagram
 
 <p>
-<img src="images/erd.jpg" width="800">
+<img src="images/erd.jpg" width="1000">
 </p>
 
 ## Relations
 
 <p>
-<img src="images/relations.jpg" width="800">
+<img src="images/relations.jpg" width="1000">
 </p>
 
 ## Author
