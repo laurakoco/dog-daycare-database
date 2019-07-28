@@ -92,4 +92,17 @@ constraint appt_pk primary key (appt_id),\
 constraint appt_fk1 foreign key (dog_id) references dog_t(dog_id),\
 constraint appt_fk2 foreign key (employee_id) references employee_t(employee_id),\
 constraint appt_fk3 foreign key (service_id) references service_t(service_id)); \
+\
+create table vaccine_t\
+(vaccine_id varchar2(2),\
+vaccine_description varchar2(25),\
+constraint vaccine_pk primary key (vaccine_id));\
+\
+create table dog_vaccine_t\
+(dog_id varchar2(5),\
+vaccine_id varchar2(2),\
+vaccine_date date,\
+constraint dog_vaccine_pk primary key (dog_id, vaccine_id),\
+constraint dog_vaccine_fk1 foreign key (dog_id) references dog_t(dog_id),\
+constraint dog_vaccine_fk2 foreign key (vaccine_id) references vaccine_t(vaccine_id));\
 }

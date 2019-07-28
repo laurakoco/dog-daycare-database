@@ -76,6 +76,14 @@ inner join employee_t\
 on appt_t.employee_id = employee_t.employee_id)\
 inner join user_t\
 on employee_t.employee_id = user_t.user_id)\
+\
+-- show vaccines for dog Tink\
+select dog_t.dog_name, vaccine_t.vaccine_description, dog_vaccine_t.vaccine_date\
+from ((dog_t\
+inner join dog_vaccine_t\
+on dog_t.dog_id = dog_vaccine_t.dog_id)\
+inner join vaccine_t\
+on dog_vaccine_t.vaccine_id = vaccine_t.vaccine_id)\
 where dog_t.dog_name = 'Tink'\
 \
 }
