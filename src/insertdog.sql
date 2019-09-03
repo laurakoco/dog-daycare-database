@@ -90,7 +90,7 @@ INSERT INTO employee_skill_t (employee_id,skill_id) VALUES ('00005','02');\
 \
 -- insert appointments\
 INSERT INTO appt_t (appt_id,appt_date,appt_time,dog_id,employee_id,service_id) VALUES ('00001',to_date('10-AUG-19','DD-MON-RR'),'2:00 PM','00001','00001','01');\
-INSERT INTO appt_t (appt_id,appt_date,appt_time,dog_id,employee_id,service_id) VALUES ('00002',to_date('15-AUG-19','DD-MON-RR'),'2:00 PM','00002','00004','02');\
+INSERT INTO appt_t (appt_id,appt_datea,appt_time,dog_id,employee_id,service_id) VALUES ('00002',to_date('15-AUG-19','DD-MON-RR'),'2:00 PM','00002','00004','02');\
 INSERT INTO appt_t (appt_id,appt_date,appt_time,dog_id,employee_id,service_id) VALUES ('00003',to_date('8-AUG-19','DD-MON-RR'),'8:00 AM','00001','00003','03');\
 INSERT INTO appt_t (appt_id,appt_date,appt_time,dog_id,employee_id,service_id) VALUES ('00004',to_date('8-AUG-19','DD-MON-RR'),'8:00 AM','00005','00004','04');\
 INSERT INTO appt_t (appt_id,appt_date,appt_time,dog_id,employee_id,service_id) VALUES ('00005',to_date('8-AUG-19','DD-MON-RR'),'12:00 PM','00003','00003','05');\

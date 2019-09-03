@@ -1,17 +1,31 @@
 # Dog Daycare Database
 
-Simple database to manage a dog daycare. Created with Oracle SQL.
+Database to manage a dog daycare.
+
+## Background
+
+The dog daycare system is designed to help a dog daycare owner keep track of things like clients, dogs, vaccinations, emergency contacts, employees, and appointments (booked services).
+
+Ideally, the system would have a front end that would allow a user (employee or client) to login in order to view pertinent information.
+
+The dog daycare offers client services such as haircuts, dog sitting (half day and full day), and boarding. These services can be booked for a dog via an appointment. Each appointment must be booked with an associated employee.
+
+Each employee has a payrate and associated skills, such as grooming and dog sitting.
+
+Monitoring a dog’s vaccines is also important. For example, in order to attend daycare, a dog must have a rabies vaccine every year. Additionally, dogs younger than two must have a kennel cough booster every six months.
 
 ## Built With
 
 * Oracle SQL
 * Oracle SQL Developer
 
-## ER Diagram
+## E-R Diagram
 
 <p>
 <img src="images/erd.jpg" width="1000">
 </p>
+
+As can be seen in the E-R diagram, the user entity is a supertype with subtypes employee and client. The relationship between the supertype and subtypes is total specialization, as indicated by the double line: a user must be either an employee or a client. The disjoint constraint, as indicated by the d, tells us that a user may not be an employee and a client at the same time.
 
 ## Relations
 
@@ -19,9 +33,9 @@ Simple database to manage a dog daycare. Created with Oracle SQL.
 <img src="images/relations.jpg" width="1000">
 </p>
 
-## Tables
+## Create Tables
 
-Here we create the tables.
+These tables have been normalized to 3NF.
 
 ```SQL
 create table user_t
@@ -124,12 +138,9 @@ constraint dog_vaccine_fk1 foreign key (dog_id) references dog_t(dog_id),
 constraint dog_vaccine_fk2 foreign key (vaccine_id) references vaccine_t(vaccine_id));
 ```
 
-## Data
-
-Here we insert the fake data.
+## Insert Data
 
 ```SQL
-
 -- insert users
 INSERT INTO user_t (user_id,user_name,user_street,user_city,user_state,user_zip,user_phone,user_email,user_pw) VALUES ('00001','Warren Casey','2814 Volutpat Ave','Belmont','MA','02330','0462714005','metuser@aol.com','CWU38WEE0IV');
 INSERT INTO user_t (user_id,user_name,user_street,user_city,user_state,user_zip,user_phone,user_email,user_pw) VALUES ('00002','Abraham Henderson','826 Mauris Rd','Plymouth','MA','01563','4060580383','quam.curabitur@bu.edu','NLY08JBR8RN');
@@ -224,7 +235,7 @@ INSERT INTO vaccine_t (vaccine_id,vaccine_description) VALUES ('01','Rabies');
 INSERT INTO vaccine_t (vaccine_id,vaccine_description) VALUES ('02','Bordetella (Kennel Cough)');
 INSERT INTO vaccine_t (vaccine_id,vaccine_description) VALUES ('03','Distemper');
 
--- insert vaccines
+-- insert dog vaccine
 INSERT INTO dog_vaccine_t (dog_id,vaccine_id,vaccine_date) VALUES ('00001','01',to_date('10-MAR-19','DD-MON-RR'));
 INSERT INTO dog_vaccine_t (dog_id,vaccine_id,vaccine_date) VALUES ('00001','02',to_date('10-MAR-19','DD-MON-RR'));
 INSERT INTO dog_vaccine_t (dog_id,vaccine_id,vaccine_date) VALUES ('00004','01',to_date('1-JAN-19','DD-MON-RR'));
@@ -278,9 +289,8 @@ inner join user_t
 on employee_t.employee_id = user_t.user_id)
 ```
 
-Show vaccines of dog Tink
+Show vaccines for dog 'Tink'
 ```SQL
--- show vaccines
 select dog_t.dog_name, vaccine_t.vaccine_description, dog_vaccine_t.vaccine_date
 from ((dog_t
 inner join dog_vaccine_t
@@ -290,9 +300,22 @@ on dog_vaccine_t.vaccine_id = vaccine_t.vaccine_id)
 where dog_t.dog_name = 'Tink'
 ```
 
-## Triggers
+## Drop Tables
 
-Work in progress.
+```SQL
+drop table appt_t;
+drop table dog_vaccine_t;
+drop table vaccine_t;
+drop table service_t;
+drop table client_dog_t;
+drop table client_t;
+drop table dog_t;
+drop table emerg_t;
+drop table employee_skill_t;
+drop table skill_t;
+drop table employee_t;
+drop table user_t;
+```
 
 ## Author
 

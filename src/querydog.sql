@@ -86,4 +86,20 @@ inner join vaccine_t\
 on dog_vaccine_t.vaccine_id = vaccine_t.vaccine_id)\
 where dog_t.dog_name = 'Tink'\
 \
+\pard\pardeftab720\ri0\partightenfactor0
+\cf0 -- return how much to pay each employee per appointment\
+select user_t.user_name as employee, employee_t.employee_payrate, dog_t.dog_name, appt_t.appt_date, appt_t.appt_time, service_t.service_description, service_t.service_duration, employee_t.employee_payrate*service_t.service_duration as pay\
+from ((((dog_t\
+inner join appt_t\
+on dog_t.dog_id = appt_t.dog_id)\
+inner join service_t\
+on service_t.service_id = appt_t.service_id)\
+inner join employee_t\
+on appt_t.employee_id = employee_t.employee_id)\
+inner join user_t\
+on employee_t.employee_id = user_t.user_id)\
+order by user_t.user_name\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
 }
