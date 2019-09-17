@@ -323,5 +323,5 @@ drop table user_t;
 
 ## Acknowledgments
 
-* Boston University MET Master Science Computer Science Program
+* Boston University MET Master of Science Computer Science Program
 * MET CS 579 Database Management
